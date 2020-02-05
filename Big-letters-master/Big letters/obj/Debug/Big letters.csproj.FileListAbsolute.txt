@@ -1,0 +1,14 @@
+C:\Users\olego\source\repos\Big letters\Big letters\bin\Debug\Big letters.exe.config
+C:\Users\olego\source\repos\Big letters\Big letters\bin\Debug\Big letters.exe
+C:\Users\olego\source\repos\Big letters\Big letters\bin\Debug\Big letters.pdb
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters.csprojAssemblyReference.cache
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\MainWindow.g.cs
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\App.g.cs
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters_MarkupCompile.cache
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters_MarkupCompile.lref
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\MainWindow.baml
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters.g.resources
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big_letters.Properties.Resources.resources
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters.csproj.GenerateResource.cache
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters.exe
+C:\Users\olego\source\repos\Big letters\Big letters\obj\Debug\Big letters.pdb
