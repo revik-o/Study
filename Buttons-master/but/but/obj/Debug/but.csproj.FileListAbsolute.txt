@@ -1,0 +1,14 @@
+C:\Users\olego\source\repos\but\but\bin\Debug\but.exe.config
+C:\Users\olego\source\repos\but\but\bin\Debug\but.exe
+C:\Users\olego\source\repos\but\but\bin\Debug\but.pdb
+C:\Users\olego\source\repos\but\but\obj\Debug\but.csprojAssemblyReference.cache
+C:\Users\olego\source\repos\but\but\obj\Debug\MainWindow.g.cs
+C:\Users\olego\source\repos\but\but\obj\Debug\App.g.cs
+C:\Users\olego\source\repos\but\but\obj\Debug\but_MarkupCompile.cache
+C:\Users\olego\source\repos\but\but\obj\Debug\but_MarkupCompile.lref
+C:\Users\olego\source\repos\but\but\obj\Debug\MainWindow.baml
+C:\Users\olego\source\repos\but\but\obj\Debug\but.g.resources
+C:\Users\olego\source\repos\but\but\obj\Debug\but.Properties.Resources.resources
+C:\Users\olego\source\repos\but\but\obj\Debug\but.csproj.GenerateResource.cache
+C:\Users\olego\source\repos\but\but\obj\Debug\but.exe
+C:\Users\olego\source\repos\but\but\obj\Debug\but.pdb
