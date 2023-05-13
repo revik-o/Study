@@ -1,5 +1,0 @@
-sudo docker build -t spring .
-sudo docker run --rm --name spring -h 127.0.0.1:127.0.0.1 -p 8000:8000 -v /home/oleg/git/AvadaMediaDZ/docker/spring/data:/files_for_db spring
-
-
-sudo ./docker-compose-Linux-x86_64 up --build
