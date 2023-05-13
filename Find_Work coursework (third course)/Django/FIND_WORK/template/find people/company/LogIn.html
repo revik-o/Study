@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'find people/company/init.css' %}">
+{% endblock %}
+
+{% block title %}
+    Аутентифікація компанії
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <h3>Компанія</h3>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <button type="submit">Вхід</button>
+        {% if enter_str == 'error' %}
+            <br><b>Неправильна пошта, або пароль</b>
+        {% endif %}
+    </form>
+
+    <div>
+        <a href="{% url 'company_CheckIn' %}">Реєстрація</a>
+    </div>
+{% endblock %}

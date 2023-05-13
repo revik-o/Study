@@ -1,0 +1,31 @@
+<!-- <div >
+    <button id="AddAdmin" class="MainPlace" (click)="openFillMain()">+New User</button>
+</div> -->
+<div class="content" *ngFor="let data_base of data_bases()">
+    <h2>{{data_base}}</h2>
+    <div>
+        <button *ngFor="let table of tables(data_base)" (click)="table_row_click(data_base, table)">
+            {{table}}
+        </button>
+    </div>
+</div>
+
+<div [id]="block_table_form" *ngIf="block_table_form_visible">
+    <div id="form">
+        <div>
+            <button id="close-button" (click)="close_table_form()">X</button>
+        </div>
+        <div id="content">
+            <!-- <app-table-info [DataBase]=DataBaseTemp [Table]=TableTemp></app-table-info> -->
+            <app-table-form [Data_Base_Name] = Data_Bases_table_form 
+                [Table_Name] = Table_Name_table_form></app-table-form>
+        </div>
+    </div>
+</div>
+
+<!-- <div [id]="mainDiv__MenuFilling" *ngIf="_visibility_">
+    <div [id]="formFill">
+        <button id="Close" (click)="Close()">X</button>
+        <app-fill-form></app-fill-form>
+    </div>
+</div> -->

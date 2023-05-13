@@ -1,0 +1,15 @@
+<form action="" method="post">
+    <b>{{email}}</b><br>
+    <input type="text" name="full_name" placeholder="Повне ім'я" class="info"><br>
+    <select name="place" class="info">
+        <option *ngFor="let p of place" value="{{p[0]}}">{{p[1]}}</option>
+    </select><br>
+    <input type="tel" name="phone" placeholder="Телефон" value="+380 " class="info"><br>
+    <a href="" class="btn">Відмінити</a>
+    <button type="submit" class="btn">Зберегти</button>
+</form>
+
+
+<div *ngFor="let r of resume">
+    <a href="#">Резюме: {{r}}</a>
+</div>

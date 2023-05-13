@@ -1,0 +1,140 @@
+SELECT * FROM public."AdditionalServicesView"
+
+SELECT * FROM public."RecreationBaseView"
+
+SELECT * FROM public."RoomNumberView"
+
+
+///AdditionalServices
+SELECT public."DeleteAdditionalServices"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertAdditionalServices"(
+	<"FoodID" integer>, 
+	<"SpaTreatmentsID" integer>
+)
+
+SELECT public."UpdateAdditionalServices"(
+	<"FoodID" integer>, 
+	<"SpaTreatmentsID" integer>, 
+	<"WhereID" integer>
+)
+///Client
+SELECT public."DeleteClient"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertClient"(
+	<"SurNameSTR" text>, 
+	<"NameSTR" text>, 
+	<"PatronymicSTR" text>, 
+	<"PhoneSTR" text>
+)
+
+SELECT public."UpdateClient"(
+	<"SurNameSTR" text>, 
+	<"NameSTR" text>, 
+	<"PatronymicSTR" text>, 
+	<"PhoneSTR" text>, 
+	<"WhereID" integer>
+)
+///Comfort
+SELECT public."DeleteComfort"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertComfort"(
+	<"TypeSTR" text>
+)
+
+SELECT public."UpdateComfort"(
+	<"TypeSTR" text>, 
+	<"WhereID" integer>
+)
+///Food
+SELECT public."DeleteFood"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertFood"(
+	<"TypeSTR" text>
+)
+
+SELECT public."UpdateFood"(
+	<"TypeSTR" text>, 
+	<"WhereID" integer>
+)
+///RecreationBase
+SELECT public."DeleteRecreationBase"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertRecreationBase"(
+	<"ClientID" integer>, 
+	<"RoomNumberID" integer>, 
+	<"DateSTART" date>, 
+	<"DateEND" date>, 
+	<"AdditionalServicesID" integer>
+)
+
+SELECT public."UpdateRecreationBase"(
+	<"ClientID" integer>, 
+	<"RoomNumberID" integer>, 
+	<"DateSTART" date>, 
+	<"DateEND" date>, 
+	<"AdditionalServicesID" integer>, 
+	<"WhereID" integer>
+)
+///RoomNumber
+SELECT public."DeleteRoomNumber"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertRoomNumber"(
+	<"Room" integer>, 
+	<"NumSeats" integer>, 
+	<"PriceD" integer>, 
+	<"ComfortID" integer>, 
+	<"RoomStatusID" integer>
+)
+
+SELECT public."UpdateRoomNumber"(
+	<"Room" integer>, 
+	<"NumSeats" integer>, 
+	<"PriceD" integer>, 
+	<"ComfortID" integer>, 
+	<"RoomStatusID" integer>, 
+	<"WhereID" integer>
+)
+///RoomStatus
+SELECT public."DeleteRoomStatus"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertRoomStatus"(
+	<"StatusSTR" text>
+)
+
+SELECT public."UpdateRoomStatus"(
+	<"StatusSTR" text>, 
+	<"WhereID" integer>
+)
+///SpaTreatments
+SELECT public."DeleteSpaTreatments"(
+	<"DelID" integer>
+)
+
+SELECT public."InsertSpaTreatments"(
+	<"TypeSTR" text>
+)
+
+SELECT public."UpdateSpaTreatments"(
+	<"TypeSTR" text>, 
+	<"WhereID" integer>
+)
+
+
+
+//SP
+SELECT public."NumberOfFreePlaces"()

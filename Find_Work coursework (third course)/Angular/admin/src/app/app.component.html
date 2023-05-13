@@ -1,0 +1,17 @@
+<header [id]="header">
+  <b>{{ title }}</b>
+</header>
+
+<div [id]="block_content" *ngIf="visibility_main_block === false">
+  <form method="POST">
+      <input type="text" placeholder="login" class="input" #login value="admin"><br>
+      <input type="password" placeholder="password" class="input" #password value="admin"><br>
+      <input type="button" value="Log-In" id="log-In-Btn"
+          (click)="log_in_click(login.value, password.value)">
+  </form>
+  <div [id]="load_point"></div>
+</div>
+
+<div *ngIf="visibility_main_block" [id]="main_page">
+  <app-main-page></app-main-page>
+</div>

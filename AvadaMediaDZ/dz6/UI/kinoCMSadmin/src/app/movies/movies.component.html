@@ -1,0 +1,70 @@
+<ng-container *ngIf="!inputMode">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{ title }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row" style="width: 100%;">
+        <div class="card-body col-md-3" *ngFor="let movie of imagesForMoviesMainPage">
+            <img style="display: block; margin-left: auto; margin-right: auto;" src="{{ movie[3] }}" class="img-fluid"
+                alt="mainImg">
+            <div style="width: 100%; text-align: center;">{{ movie[1] }}</div>
+        </div>
+    </div>
+    <button class="btn btn-block btn-success btn-lg" (click)="openInpunMode()">Add new</button>
+</ng-container>
+
+<!-- Input Mode -->
+
+<ng-container *ngIf="inputMode">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <div class="form-group">
+                <button class="back_arrow" (click)="back()">&#8249; Back</button>
+            </div>
+            <div class="form-group">
+                <label for="movie_name_input">Movie name</label>
+                <input type="text" name="movie_name" class="form-control" #name_input placeholder="name movie">
+            </div>
+            <div class="form-group">
+                <label for="description_textarea">Description</label>
+                <textarea name="description" class="form-control" #description_textarea cols="30" rows="10"
+                    placeholder="description"></textarea>
+            </div>
+            <div class="form-group" style="width: max-content;">
+                <label for="main_picture_input">Main picture</label><br>
+                <div class="picture" *ngIf="mainImage != ''">
+                    <input class="cross" type="button" value="X" style="transform: translateX(-100%);"
+                        (click)="removePhoto(-1)">
+                    <img [src]="mainImage" class="main_image_card" #main_picture_img_input /><br>
+                </div>
+                <input type="file" style="display: none;" (change)="openPhoto($event, -1)" #main_picture_file_input>
+                <input type="button" value="Select photo" style="display: block; margin: 0px auto;"
+                    (click)="main_picture_file_input.click()" *ngIf="mainImage == ''">
+            </div>
+            <div class="form-group">
+                <label for="gallery_input">Gallery</label><br>
+                <input type="button" value="Select photo" (click)="picture_file_input.click()">
+                <input type="file" style="display: none;" (change)="openPhoto($event, null)" #picture_file_input>
+                <div class="row" style="width: 100%;">
+                    <div class="card-body col-md-3" *ngFor="let image of images; index as i">
+                        <div class="picture">
+                            <input type="button" class="cross" value="X"
+                                style="width: 15rem; float: none; border-radius: 0px;" (click)="removePhoto(i)">
+                            <img src="{{ image }}" class="image_card">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-seo-block></app-seo-block>
+        </div>
+        <input type="button" class="btn btn-block btn-success btn-lg" value="Submit" (click)="submit(
+                name_input.value, 
+                description_textarea.value
+                )">
+    </form>
+</ng-container>

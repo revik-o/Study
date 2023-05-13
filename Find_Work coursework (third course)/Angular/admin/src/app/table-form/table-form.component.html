@@ -1,0 +1,68 @@
+<h3 class="form">{{table}}</h3>
+
+<div id="block-table" class="form">
+    <table>
+        <tr>
+            <th *ngFor="let value of column">
+                {{value}}
+            </th>
+        </tr>
+        <tr class="info" *ngFor="let line of lines_table" (click)="tr_click(line)">
+            <td *ngFor="let info of line">
+                {{info}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div [id]="option_menu" (click)="close_option_menu()">
+    <button class="BTNDB1" (click)="open_update()">UPDATE</button>
+    <button class="BTNDB1" (click)="DELETE()">DELETE</button>
+</div>
+
+<div id="BlockButtons" class="form">
+    <button class="BTNDB2" (click)="open_insert()">INSERT</button>
+    <button id="exel" (click)="excel()">EXPORT .xls</button>
+</div>
+
+<div [id]="menu4fill">
+    <button id="close-menu" (click)="close_menu4fill()">X</button>
+    <div id="menu-fill">
+        <div *ngFor="let column of fields">
+            <ng-container *ngIf="column[0] == 'password'; else inp">
+                {{column[1]}}<br>
+                <input type="password" id="{{column[2]}}">
+                <br>
+            </ng-container>
+            <ng-container #inp *ngIf="column[0] == 'input'; else sel">
+                {{column[1]}}<br>
+                <input type="text" id="{{column[2]}}" value="{{column[3]}}">
+                <br>
+            </ng-container>
+            <ng-container #sel *ngIf="column[0] == 'select'; else ta">
+                {{column[1]}}<br>{{column[3]}}
+                <select id="{{column[2]}}">
+                    <ng-container *ngFor="let value of column[3]">
+                        <ng-container *ngIf="value[1] == comparative_value[column[2]]; else opt_usualy">
+                            <option [value]="value[0]" selected>{{value[1]}}</option>
+                        </ng-container>
+                        <option #opt_usualy *ngIf="value[0] != ''" [value]="value[0]">{{value[1]}}</option>
+                    </ng-container>
+                </select>
+                <br>
+            </ng-container>
+            <ng-container #ta *ngIf="column[0] == 'textarea'">
+                {{column[1]}}<br>
+                <textarea id="{{column[2]}}" cols="30" rows="15">{{column[3]}}</textarea>
+                <br>
+            </ng-container>
+        </div>
+        <button (click)="subbmit()">{{name_button_menu4fill}}</button>
+    </div>
+</div>
+
+
+<div *ngIf="is_load" [id]="load_screen">
+    <h1>Зачекайте</h1>
+    <div></div>
+</div>

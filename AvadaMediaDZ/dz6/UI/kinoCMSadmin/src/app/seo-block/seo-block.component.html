@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label for="seo_url">Seo block</label>
+    <input type="text" name="seo_url" class="form-control mb-1" id="seo_url" placeholder="URL"
+        (keyup)="setSeoUrl($event)">
+    <input type="text" name="seo_title" class="form-control mb-1" id="seo_title" placeholder="Title"
+        (keyup)="setSeoTitle($event)">
+    <input type="text" name="seo_keyword" class="form-control mb-1" id="seo_keyword" placeholder="Keyword"
+        (keyup)="setSeoKeyword($event)">
+    <textarea name="seo_description" class="form-control mb-1" id="seo_description" cols="30" rows="10"
+        placeholder="Description" (keyup)="setSeoDescription($event)"></textarea>
+</div>

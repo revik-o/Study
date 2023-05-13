@@ -1,0 +1,55 @@
+SELECT rb.id, cl.surname, cl.name, cl.patronymic, cl.phone, rn."roomNumber", rb."startDate", rb."endDate", f.type, st."typeST"
+	FROM "RecreationBase" rb, "Client" cl, "RoomNumber" rn, "AdditionalServices" aserv, "Food" f,"SpaTreatments" st
+  	WHERE cl.id = rb."idClient" AND rn.id = rb."idRoomNumber" AND aserv.id = rb."idAdditionalServices" AND 
+	(f.id IN ( SELECT f22."idFood" FROM "AdditionalServices" f22 WHERE f22.id = aserv.id)) AND 
+	(st.id IN ( SELECT f33."idSpaTreatments" FROM "AdditionalServices" f33 WHERE f33.id = aserv.id));
+
+RecreationBaseView
+
+
+CREATE TRIGGER "AutoUpdateInfoRoomNumber" BEFORE INSERT ON public."RecreationBase" 
+	FOR EACH ROW EXECUTE PROCEDURE "AutoUpdateInfoRoomNumber"()
+
+
+RecreationBase _> iiiiii ffff DDD
+RoomStatus _> iiiiii8 ffff5 DDD7
+RoomNumber _> iiiiii7 ffff4 DDD3
+Food _> iiiiii6 ffff8 DDD6
+Client _> iiiiii5 ffff3 DDD4
+Comfort _> iiiiii4 ffff7 DDD5
+AdditionalServices _> iiiiii3 ffff2 DDD2
+SpaTreatments _> iiiiii2 ffff6 DDD8
+
+
+
+AdditionalServices _> public."DeleteAdditionalServices", public."InsertAdditionalServices", public."UpdateAdditionalServices"
+Client _> public."DeleteClient", public."InsertClient", public."UpdateClient"
+Comfort _> public."DeleteComfort", public."InsertComfort", public."UpdateComfort"
+Food _> public."DeleteFood", public."InsertFood", public."UpdateFood"
+RecreationBase _> public."DeleteRecreationBase", public."InsertRecreationBase", public."UpdateRecreationBase"
+RoomNumber _> public."DeleteRoomNumber", public."InsertRoomNumber", public."UpdateRoomNumber"
+RoomStatus _> public."DeleteRoomStatus", public."InsertRoomStatus", public."UpdateRoomStatus"
+SpaTreatments _> public."DeleteSpaTreatments", public."InsertSpaTreatments", public."UpdateSpaTreatments"
+
+
+SELECT rb.id,
+    cl.surname,
+    cl.name,
+    cl.patronymic,
+    cl.phone,
+    rn."roomNumber",
+    rb."startDate",
+    rb."endDate",
+    f.type,
+    st."typeSt"
+   FROM "RecreationBase" rb,
+    "Client" cl,
+    "RoomNumber" rn,
+    "AdditionalServices" aserv,
+    "Food" f,
+    "SpaTreatments" st
+  WHERE cl.id = rb."idClient" AND rn.id = rb."idRoomNumber" AND aserv.id = rb."idAdditionalServices" AND (f.id IN ( SELECT f22."idFood"
+           FROM "AdditionalServices" f22
+          WHERE f22.id = aserv.id)) AND (st.id IN ( SELECT f33."idSpaTreatments"
+           FROM "AdditionalServices" f33
+          WHERE f33.id = aserv.id));

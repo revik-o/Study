@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'find work/user/init.css' %}">
+{% endblock %}
+
+{% block title %}
+    Аутентифікація користувача
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'FindWork' %}" method="post">
+        <h3>Аутентифікація користувача</h3>
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <button type="submit">Вхід</button>
+        {% if enter_str == 'error' %}
+            <br><b>Неправильна пошта, або пароль</b>
+        {% endif %}
+    </form>
+
+    <div>
+        <a href="{% url 'user_CheckIn' %}">Реєстрація</a>
+    </div>
+{% endblock %}

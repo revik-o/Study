@@ -1,0 +1,17 @@
+<form action="#" method="post">
+    <h1>Нова вакансія компанії "{{company}}"</h1>
+    <input type="text" name="Name_Job" placeholder="Назва роботи" class="info"><br>
+    <input type="text" name="selery" placeholder="Зарплата" class="info"><br>
+    <select name="category" class="info">
+        <option *ngFor="let c of category" value="{{c[0]}}">{{c[1]}}</option>
+    </select><br>
+    <select name="place" class="info">
+        <option *ngFor="let c of place" value="{{c[0]}}">{{c[1]}}</option>
+    </select><br>
+    <select name="experiense" class="info">
+        <option *ngFor="let c of experiense" value="{{c[0]}}">{{c[1]}}</option>
+    </select><br>
+    <textarea name="description" cols="30" rows="15" placeholder="Опис роботи" 
+                class="info"></textarea><br>
+    <button type="submit">Виставити роботу</button>
+</form>

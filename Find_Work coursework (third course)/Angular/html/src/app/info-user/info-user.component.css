@@ -1,0 +1,56 @@
+form {
+    padding: 1%;
+    text-align: center;
+}
+
+.info {
+    padding: 1%;
+
+    font-size: 150%;
+
+    width: 50%;
+
+    border-radius: 5px;
+    border-width: 0px;
+
+    background: rgb(235, 235, 235);
+
+    transform: perspective(0px) translateZ(0px);
+
+    margin: 1%;
+
+    transition: 0.5s;
+}
+
+.info:hover {
+    transform: perspective(100px) translateZ(3px);
+
+    background: rgb(243, 243, 243);
+
+    box-shadow: 0px 5px 10px #00000044;
+
+    transition: 0.7s;
+}
+
+form .btn {
+    margin: 1%;
+    padding: 1% 5%;
+
+    font-size: 120%;
+
+    background: rgb(87, 87, 87);
+
+    border-radius: 3px;
+    border-width: 0px;
+
+    color: #ffffff;
+
+    transform: perspective(0px) translateZ(0px);
+    transition: 0.5s;
+}
+
+form .btn:hover {
+    transform: perspective(100px) translateZ(3px);
+    box-shadow: 0px 5px 0px #000000;
+    transition: 0.5s;
+}

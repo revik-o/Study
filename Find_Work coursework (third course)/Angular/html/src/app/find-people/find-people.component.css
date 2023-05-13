@@ -1,0 +1,112 @@
+#navBar {
+    padding: 1%;
+    width: 98%;
+    /*  */
+    background: rgb(0, 32, 136);
+}
+
+#navBar b {
+    color: rgb(255, 255, 255);
+    font-size: 150%;
+}
+
+#navBar button {
+    float: right;
+    background: rgb(255, 255, 255);
+    /*  */
+    color: rgb(0, 32, 127);
+
+    font-size: 100%;
+
+    margin: 3px 13px;
+
+    border-radius: 5px;
+    border-width: 0px;
+
+    transform: perspective(0px) translateZ(0px);
+
+    transition: 0.5s;
+}
+
+#navBar button:hover {
+    background: rgb(238, 238, 238);
+
+    transition: 0.5s;
+}
+
+form {
+    text-align: center;
+    margin: 1%;
+}
+
+form input {
+    padding: 0.4%;
+    font-size: 100%;
+    margin: 0.2%;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+form select {
+    background: rgb(255, 255, 255);
+    padding: 0.4%;
+    font-size: 100%;
+    margin: 0.1%;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+form button {
+    /*  */
+    background: rgb(0, 32, 127);
+    color: #ffffff;
+    padding: 0.4%;
+    font-size: 100%;
+    margin: 0.1%;
+    border-radius: 10px;
+    border-width: 0px;
+    border-style: solid;
+}
+
+#INFO_JOB {
+    display: block;
+    margin: 1% auto;
+
+    width: 75%;
+
+    padding: 1%;
+}
+
+#INFO_JOB div{
+    padding: 1%;
+    background: rgb(235, 235, 235);
+
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 350px){
+    
+    #navBar button {
+        float: none;
+
+        display: block;
+
+        margin: 0%;
+
+        width: 100%;
+    
+        font-size: 100%;
+    
+        border-radius: 0px;
+        border-width: 0px;
+    }
+
+    #navBar {
+        text-align: center;
+        padding: 0%;
+
+        padding-bottom: 1%;
+    }
+}

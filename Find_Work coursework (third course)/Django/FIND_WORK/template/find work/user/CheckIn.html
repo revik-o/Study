@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'find work/user/init.css' %}">
+{% endblock %}
+
+{% block title %}
+    Реєстрація користувача
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <h3>Реєстрація користувача</h3>
+        {% csrf_token %}
+        {% if email == ''%}
+            <input type="email" name="email" placeholder="Email"><br>
+        {% else %}
+            <input type="email" name="email" placeholder="Email" value="{{ email }}"><br>
+        {% endif %}
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="password_again" placeholder="Type Password again"><br>
+        <button type="submit">Реєстрація</button>
+    </form>
+
+    <div>
+        <a href="{% url 'user_LogIn' %}">Увійти</a>
+    </div>
+{% endblock %}

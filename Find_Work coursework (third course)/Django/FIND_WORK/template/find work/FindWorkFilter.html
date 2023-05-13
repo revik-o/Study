@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'find work/FindWork.css' %}">
+{% endblock %}
+
+{% block title %}
+    Find Work
+{% endblock %}
+
+{% block content %}
+    <div id="navBar">
+        <a href="{% url 'FindWork' %}"><b>Find Work</b></a>
+        {% if user_info != None%}
+            <div id="infoUser">
+                <a href="{% url 'user_UpdateInfo' %}"><b>{{ user_info.email }}</b>
+                    {% if user_info.img != ''%}
+                        <img src="{{ user_info.img }}" alt="">
+                    {% endif %}    
+                </a>
+            </div>
+        {% else%}
+            <button onclick="EnterClick()">Вхід або реєстрація</button>
+        {% endif %}
+    </div>
+
+    <form action="{% url 'FindWork_' %}" method="post">
+        {% csrf_token %}
+        <input type="search" name="search" placeholder="Введіть назву роботи" value="{{ search }}">
+        <select name="category">
+            {% for line in category %}
+                {% for val in line%}
+                    {% if val == category_s %}
+                        <option value="{{ val }}" selected>{{ val }}</option>
+                    {% else %}
+                        <option value="{{ val }}">{{ val }}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+        <select name="experiense">
+            {% for line in experience %}
+                {% for val in line%}
+                    {% if val == experience_s %}
+                        <option value="{{ val }}" selected>{{ val }}</option>
+                    {% else %}
+                        <option value="{{ val }}">{{ val }}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+        <select name="place">
+            {% for line in place %}
+                {% for val in line%}
+                    {% if val == place_s %}
+                        <option value="{{ val }}" selected>{{ val }}</option>
+                    {% else %}
+                        <option value="{{ val }}">{{ val }}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+        <button type="submit">Пошук</button>
+    </form>
+
+    <div id="INFO_JOB">
+        {% for line in job %}
+            <div>
+                <a href="{% url 'FindWork' %}"><h3>{{ line.1 }}</h3></a>
+                <span>Компанія: {{ line.2 }}</span><br>
+                <span>Категорія: {{ line.4 }}</span><br>
+                <!-- <span>{{ line.3 }}</span><br> -->
+                <span>Досвід: {{ line.6 }}</span><br>
+                <span>Місто работи: {{ line.5 }}</span><br>
+                {% if line.7 != None %}
+                    {{ line.7 }}
+                {% endif %}
+                <p>{{ line.8 }}</p>
+                {% if line.9 != None %}
+                    {{ line.9 }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function EnterClick() {
+        location.href = "{% url 'user_LogIn' %}"
+    }
+</script>
+{% endblock %}

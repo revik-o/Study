@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'fill_gaps.css' %}">
+{% endblock %}
+
+{% block title %}
+    Редагування інформації
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        <b>{{ email }}</b><br>
+        <b>{{ sel_place }}</b><br>
+        {% csrf_token %}
+        <input type="text" name="full_name" placeholder="Повне ім'я" class="info" value="{{ full_name }}"><br>
+        <input type="tel" name="phone" placeholder="Телефон" value="{{ phone }}" class="info"><br>
+        <select name="place" class="info">
+            {% for place in places %}
+                {% for val in place %}
+                    {% if val == sel_place %}
+                        <option value="{{ val }}" selected>{{ val }}</option>
+                    {% else %}
+                        <option value="{{ val }}">{{ val }}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select><br>
+        <b>Оберіть фото</b><br>
+        <input type="file" name="photo" placeholder="Додайте Фото" class="info"><br>
+        <button type="submit">Find Work</button>
+    </form>
+
+    <div>
+        {% for value in resumes %}
+            <a href="{% url 'user_Resume' value.2 value.0 %}">Резюме: {{value.3}}</a><br>
+        {% endfor %}
+    </div><br>
+
+    <div>
+        <a href="{% url 'user_AddResume' %}">Створити Резюме</a><br>
+        <a href="{% url 'user_LogOut' %}">Вийти</a><br>
+    </div>
+{% endblock %}

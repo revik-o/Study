@@ -1,0 +1,27 @@
+.picture .cross {
+    display: block;
+    float: right;
+    background: rgb(224, 0, 0);
+    color: white;
+    border-width: 0px;
+    border-radius: 15%;
+}
+
+.main_image_card {
+    width: 25rem;
+    margin-bottom: 1%;
+}
+
+.image_card {
+    width: 15rem;
+    margin-bottom: 1%;
+    display: inline;
+}
+
+.back_arrow {
+    border-radius: 5%;
+    border-width: 0px;
+    background: rgb(0, 110, 77);
+    color: rgb(255, 255, 255);
+    font-size: 130%;
+}

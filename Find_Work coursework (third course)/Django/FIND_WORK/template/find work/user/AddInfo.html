@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'fill_gaps.css' %}">
+{% endblock %}
+
+{% block title %}
+    Додавання інформації
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        <b>{{ email }}</b><br>
+        {% csrf_token %}
+        <input type="text" name="full_name" placeholder="Повне ім'я" class="info"><br>
+        <input type="tel" name="phone" placeholder="Телефон" value="+380 " class="info"><br>
+        <select name="place" class="info">
+            {% for place in places %}
+                {% for val in place %}
+                    <option value="{{ val }}">{{ val }}</option>
+                {% endfor %}
+            {% endfor %}
+        </select><br>
+        <b>Оберіть фото</b><br>
+        <input type="file" name="photo" placeholder="Додайте Фото" class="info"><br>
+        <button type="submit">Update</button>
+    </form>
+
+    <div>
+        <a href="{% url 'user_AddResume' %}">Створити Резюме</a>
+    </div>
+{% endblock %}

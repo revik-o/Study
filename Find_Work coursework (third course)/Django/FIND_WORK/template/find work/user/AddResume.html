@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'fill_gaps.css' %}">
+{% endblock %}
+
+{% block title %}
+    Резюме
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h1>Резюме "{{ email }}"</h1>
+    <select name="category" class="info">
+        {% for line in category %}
+            {% for val in line%}
+                <option value="{{ val }}">{{ val }}</option>
+            {% endfor %}
+        {% endfor %}
+    </select><br>
+    <input type="text" name="name_resume" class="info"><br>
+    <textarea name="skills" cols="30" rows="15" placeholder="Навички" class="info"></textarea><br>
+    <textarea name="experience" cols="30" rows="15" placeholder="Досвід" class="info"></textarea><br>
+    <textarea name="languages" cols="30" rows="15" 
+            placeholder="Мови, на яких ви можете розмовляти" class="info"></textarea><br>
+    <textarea name="description" cols="30" rows="15" 
+            placeholder="Напишіть про себе" class="info"></textarea><br>
+    <textarea name="find_me" cols="30" rows="15" 
+            placeholder="Вкажіть соціальні мережі де вас можна знайти" 
+                class="info"></textarea><br>
+    <button type="submit">Виставити Резюме</button>
+</form>
+{% endblock %}

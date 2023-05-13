@@ -1,0 +1,34 @@
+<ng-container *ngIf="inputMode">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <div class="form-group">
+                <button class="back_arrow" (click)="back()">&#8249; Back</button>
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input *ngIf="newsState" checked type="checkbox" class="custom-control-input" id="customSwitch1"
+                        (change)="checkboxSwitch($event.target.checked)">
+                    <input *ngIf="!newsState" type="checkbox" class="custom-control-input" id="customSwitch1"
+                        (change)="checkboxSwitch($event.target.checked)">
+                    <label class="custom-control-label" for="customSwitch1">{{ checkboxText }}</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title_input">Title</label>
+                <input id="title_input" type="text" name="title" class="form-control" placeholder="Title"
+                    #title_input>
+            </div>
+            <div class="form-group">
+                <label for="description_textarea">Description</label>
+                <textarea id="description_textarea" name="description" class="form-control" placeholder="Description"
+                    cols="30" rows="10" #description_textarea></textarea>
+            </div>
+            <div class="form-group">
+                <label for="link_input">Link</label>
+                <input type="text" name="trailer_link" class="form-control" #link_input placeholder="Link">
+            </div>
+            <app-seo-block></app-seo-block>
+        </div>
+        <input type="button" class="btn btn-block btn-success btn-lg" value="Submit">
+    </form>
+</ng-container>

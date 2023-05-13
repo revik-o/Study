@@ -1,0 +1,49 @@
+<div class="login-page" *ngIf="inState == false">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="#" class="h1"><b>Admin</b> {{ title }}</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Login"
+                            (keyup.enter)="signIn(login_field.value, password_field.value)" #login_field>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password"
+                            (keyup.enter)="signIn(login_field.value, password_field.value)" #password_field>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div style="width: 100%;">
+                            <input type="button" class="btn btn-primary btn-block" value="Sign In"
+                                (click)="signIn(login_field.value, password_field.value)">
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+<app-dashboard *ngIf="inState === true"></app-dashboard>
+
+<app-message></app-message>

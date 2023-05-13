@@ -1,0 +1,30 @@
+<div id="navBar">
+    <b>Find Work</b>
+    <button>Вхід або реєстрація</button>
+</div>
+
+<form action="#" method="post">
+    <input type="search" name="search">
+    <select name="category">
+        <option *ngFor="let c of category" value="{{c[0]}}">{{c[1]}}</option>
+    </select>
+    <select name="experiense">
+        <option *ngFor="let c of experiense" value="{{c[0]}}">{{c[1]}}</option>
+    </select>
+    <select name="place">
+        <option *ngFor="let c of place" value="{{c[0]}}">{{c[1]}}</option>
+    </select>
+    <button type="submit">Пошук</button>
+</form>
+
+<div id="INFO_JOB">
+    <div *ngFor="let j of job">
+        <a href=""><h3>{{j[0]}}</h3></a>
+        <span>Компанія: {{j[2]}}</span><br>
+        <span>Категорія: {{j[1]}}</span><br>
+        <!-- <span>{{j[3]}}</span><br> -->
+        <span>Досвід: {{j[4]}}</span><br>
+        <span>Місто работи: {{j[5]}}</span>
+        <p>{{j[6]}}</p>
+    </div>
+</div>

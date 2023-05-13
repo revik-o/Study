@@ -1,0 +1,39 @@
+#load-point-disable {
+    display: block;
+
+    margin: 1% auto;
+    padding: 0%;
+
+    border-radius: 100%;
+}
+
+#load-point-enable {
+    display: block;
+
+    margin: 1% auto;
+
+    width: 1%;
+    
+    padding-top: 1%;
+    
+    border-radius: 100%;
+
+    background: rgb(27, 27, 27);
+
+    animation-name: load;
+    animation-duration: 0.15s;
+    animation-direction: alternate;
+    animation-fill-mode: unset;
+    animation-iteration-count: infinite;
+
+    transition: 0.3s;
+}
+
+@keyframes load {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

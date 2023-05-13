@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <style>
+        div {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #mainName {
+            width: 70%;
+            float: left;
+        }
+
+        #nameUser {
+            font-size: 210%;
+        }
+
+        #nameResume {
+            color: #00478a;
+            font-size: 130%;
+        }
+
+        img {
+            display: block;
+            width: 130px;
+            height: 130px;
+            border-radius: 100%;
+            float: right;
+        }
+
+        .HB {
+            font-size: 180%;
+        }
+
+        .INF {
+            font-size: 110%;;
+            color: rgb(27, 27, 27);
+            word-wrap: break-word;
+            /* max-width: 99%; */
+        }
+
+        #Skills {
+            /* background: #000; */
+            float: left;
+            min-width: 45%;
+            max-width: 48%;
+            margin-top: 12%;
+            margin-bottom: 4%;
+        }
+
+        #Experience {
+            float: right;
+            min-width: 45%;
+            max-width: 48%;
+            margin-top: 4%;
+            margin-bottom: 4%;
+
+            /* margin-right: 1%; */
+        }
+
+        .L {
+            float: left;
+            min-width: 40%;
+            max-width: 41%;
+            margin-bottom: 4%;
+            /* margin-top: 3%; */
+        }
+
+        .R {
+            float: right;
+            min-width: 45%;
+            max-width: 48%;
+            margin-right: 1%;
+            margin-bottom: 4%;
+        }
+
+        #spase {
+            float: left;
+            width: 100%;
+            height: 2px;
+            background: rgba(235, 235, 235, 0);
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Резюме
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div id="mainName">
+            <b id="nameUser">{{ User_Name }}</b><br>
+            <b id="nameResume">{{ Name_Resume }}</b><br>
+            <b >Тел. {{ Phone }}</b>
+        </div>
+        <img src="data:image/png;base64, {{ URL_Img }}" alt=""><br>
+    </div>
+    <div id="Skills">
+        <b class="HB">Skills</b><br>
+        <b class="INF">{{ Skills }}</b>
+    </div>
+
+    <div id="Experience">
+        <b class="HB">Experience</b><br>
+        <b class="INF">{{ Experience }}</b>
+    </div>
+
+    <div id="spase"></div>
+
+    <div class="L">
+        <b class="HB">Languages</b><br>
+        <b class="INF">{{ Languages }}</b>
+    </div>
+
+    <div class="R">
+        <b class="HB">Description</b><br>
+        <b class="INF">{{ Description }}</b>
+    </div>  
+
+    <div class="L">
+        <b class="HB">Find Me</b><br>
+        <b class="INF">{{ Find_Me }}</b>
+    </div>
+{% endblock %}

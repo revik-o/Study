@@ -1,0 +1,43 @@
+.main_container {
+    padding: 1%;
+    position: fixed;
+    top: 59%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 40%;
+    height: min-content;
+}
+
+#main_container_close {
+    background: rgb(39, 39, 39);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#main_container {
+    background: rgb(216, 0, 0);
+    transition: 0.3s;
+}
+
+#main_container_message {
+    background: rgb(0, 150, 62);
+    transition: 0.3s;
+}
+
+img {
+    display: block;
+    margin: 0px auto;
+    width: 8%;
+}
+
+p {
+    text-align: center;
+}
+
+button {
+    float: right;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border-width: 0px;    
+}
