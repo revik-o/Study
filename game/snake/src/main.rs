@@ -43,15 +43,35 @@ fn main() {
         height: 23, // chars
         width: 80,
     };
+    let performance_result = utils::performance_test();
+    let mut fps = 0;
     let mut frame = vec![vec![' '; resolution.width as usize]; resolution.height as usize];
-    let mut snake = Snake::new(1, resolution.width - 1, 1, resolution.height - 1);
+    let mut snake = Snake::new(
+        1,
+        resolution.width - 1,
+        1,
+        resolution.height - 1,
+        performance_result,
+    );
     utils::test_the_screen(&resolution);
+    let mut current_fps_time = std::time::Instant::now();
 
     loop {
         snake.snake_move();
         make_scene(&mut frame, &resolution);
         snake.render_snake_on_frame(&mut frame);
         draw_frame(&frame);
-        frame = vec![vec![' '; resolution.width as usize]; resolution.height as usize]
+        frame = vec![vec![' '; resolution.width as usize]; resolution.height as usize];
+        fps += 1;
+
+        if std::time::Instant::now()
+            .saturating_duration_since(current_fps_time)
+            .as_secs_f32()
+            > 0.99999
+        {
+            print!("fps: {}", fps);
+            fps = 0;
+            current_fps_time = std::time::Instant::now();
+        }
     }
 }
