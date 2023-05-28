@@ -4,6 +4,11 @@ use utils::clean_screen;
 mod types;
 mod utils;
 
+#[link(name = "librand32.so", kind="dylib")]
+extern {
+    fn rand_int(range: i32);
+}
+
 // think about it vec[x + width * y]
 
 fn make_scene(frame: &mut Vec<Vec<char>>, resolution: &types::Resolution) {
@@ -39,6 +44,9 @@ fn draw_frame(frame: &Vec<Vec<char>>) {
 }
 
 fn main() {
+    unsafe {
+        rand_int(10);
+    }
     let resolution = types::Resolution {
         height: 23, // chars
         width: 80,

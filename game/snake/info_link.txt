@@ -3,3 +3,4 @@ https://samrambles.com/guides/window-hacking-with-rust/creating-a-dll-with-rust/
 https://samrambles.com/guides/window-hacking-with-rust/creating-a-window-with-rust/index.html#the-window-procedure
 https://stackoverflow.com/questions/40602708/linking-rust-application-with-a-dynamic-library-not-in-the-runtime-linker-search
 https://users.rust-lang.org/t/ifdef-like-feature/1753/3
+Foreign function interface (FFI) // use it

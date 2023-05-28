@@ -1,6 +1,6 @@
 use std::mem::Discriminant;
 
-use rand::Rng;
+use crate::utils;
 
 pub struct Resolution {
     pub height: u32, // pixel == char
@@ -22,7 +22,7 @@ pub enum Way {
 
 impl Way {
     pub fn custom_selection_generate(ways: Vec<&Way>) -> &Way {
-        return ways[rand::thread_rng().gen_range(0..ways.len())];
+        return ways[utils::rand_range(0..ways.len())];
     }
 
     pub fn generate() -> &'static Way {
@@ -45,8 +45,8 @@ impl SnakeBodyPard {
         symbol: char,
     ) -> SnakeBodyPard {
         SnakeBodyPard {
-            x_coordinate: rand::thread_rng().gen_range(x_min_limit..x_max_limit),
-            y_coordinate: rand::thread_rng().gen_range(y_min_limit..y_max_limit),
+            x_coordinate: utils::rand_range(x_min_limit..x_max_limit),
+            y_coordinate: utils::rand_range(y_min_limit..y_max_limit),
             symbol,
         }
     }

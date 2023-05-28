@@ -1,3 +1,8 @@
+use rand::{
+    distributions::uniform::{SampleRange, SampleUniform},
+    Rng,
+};
+
 use crate::types::Resolution;
 
 pub fn debug_pause(millis: u64) {
@@ -46,4 +51,12 @@ pub fn performance_test() -> u32 {
             return operation_index;
         }
     }
+}
+
+pub fn rand_range<T, R>(range: R) -> T
+where
+    T: SampleUniform,
+    R: SampleRange<T>,
+{
+    rand::thread_rng().gen_range(range)
 }
