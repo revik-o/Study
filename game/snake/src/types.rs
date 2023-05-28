@@ -87,7 +87,7 @@ impl Snake {
         Snake {
             body_parts: body_parts,
             way: std::mem::discriminant(snake_way),
-            move_offcet: performance_result as i32 / 5,
+            move_offcet: performance_result as i32 / 2,
             move_index: 0,
         }
     }

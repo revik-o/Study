@@ -1,1 +1,1 @@
-cargo build --release
+RUSTFLAGS='-C target-feature=+crt-static' cargo build --release
