@@ -1,9 +1,8 @@
-use rand::{
-    distributions::uniform::{SampleRange, SampleUniform},
-    Rng,
-};
-
 use crate::types::Resolution;
+
+extern {
+    fn rand_int(range: i32);
+}
 
 pub fn debug_pause(millis: u64) {
     std::thread::sleep(std::time::Duration::from_millis(millis))
@@ -53,10 +52,14 @@ pub fn performance_test() -> u32 {
     }
 }
 
-pub fn rand_range<T, R>(range: R) -> T
-where
-    T: SampleUniform,
-    R: SampleRange<T>,
-{
-    rand::thread_rng().gen_range(range)
+// pub fn rand_range<T, R>(range: R) -> T
+// where
+//     T: SampleUniform,
+//     R: SampleRange<T>,
+// {
+//     rand::thread_rng().gen_range(range)
+// }
+
+pub fn rand_range<R>(range: R) -> u32 {
+    unsafe { rand_int(2) as u32 }
 }

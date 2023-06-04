@@ -7,3 +7,4 @@ project(SnakeLib)
 set(LIB_NAME rand32.c)
 
 add_library(rand32 SHARED ${LIB_NAME})
+install(TARGETS rand32 DESTINATION .)

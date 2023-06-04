@@ -1,13 +1,13 @@
+// #[link(name = "rand32", kind = "static")]
+extern {
+    fn rand_int(range: i32) -> i32;
+}
+
 use types::Snake;
 use utils::clean_screen;
 
 mod types;
 mod utils;
-
-#[link(name = "librand32.so", kind="dylib")]
-extern {
-    fn rand_int(range: i32);
-}
 
 // think about it vec[x + width * y]
 
@@ -44,9 +44,11 @@ fn draw_frame(frame: &Vec<Vec<char>>) {
 }
 
 fn main() {
+    println!("hi");
     unsafe {
-        rand_int(10);
+        rand_int(10)
     }
+    unsafe { println!("{}", rand_int(10)) };
     let resolution = types::Resolution {
         height: 23, // chars
         width: 80,

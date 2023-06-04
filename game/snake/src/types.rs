@@ -22,7 +22,7 @@ pub enum Way {
 
 impl Way {
     pub fn custom_selection_generate(ways: Vec<&Way>) -> &Way {
-        return ways[utils::rand_range(0..ways.len())];
+        return ways[utils::rand_range(0..ways.len()) as usize];
     }
 
     pub fn generate() -> &'static Way {
