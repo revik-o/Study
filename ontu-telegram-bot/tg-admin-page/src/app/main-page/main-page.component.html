@@ -1,0 +1,25 @@
+<span id="version-info">v0.0.3</span>
+<aside class="side-menu">
+    <div class="div-button" (click)="clickOnSideMenuButton(componentNames.langEditorPro)">
+        <img class="icon-20" src="assets/icon/translation.png" alt="pack">
+        <span>
+            {{ languageService.langDictionary.mainPageButtonTitleLangEditorPro }}
+        </span>
+    </div>
+    <hr>
+    <div class="div-button" (click)="clickOnSideMenuButton(componentNames.tgActivityEditorPro)">
+        <img class="icon-20" src="assets/icon/tg-editor.png" alt="pack">
+        <span>
+            {{ languageService.langDictionary.mainPageButtonTitleTgActivityEditorPro }}
+        </span>
+    </div>
+</aside>
+<main class="main-block">
+    <div class="use-padding">
+        <app-lang-editor-pro-block *ngIf="mainPageContext.mainComponentName == componentNames.langEditorPro">
+        </app-lang-editor-pro-block>
+        <app-tg-activity-editor-pro-block
+            *ngIf="mainPageContext.mainComponentName == componentNames.tgActivityEditorPro">
+        </app-tg-activity-editor-pro-block>
+    </div>
+</main>
