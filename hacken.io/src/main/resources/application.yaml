@@ -1,0 +1,30 @@
+hacken:
+  application:
+    credentials:
+      grove-city-chain-prefix: ${GROVE_CITY_CHAIN_PREFIX:avax-mainnet}
+      grove-city-application-id: ${GROVE_CITY_APPLICATION_ID:e5fc637d}
+
+spring:
+  application.name: task
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB_NAME:admin}
+    username: ${POSTGRES_DB_USER:admin}
+    password: ${POSTGRES_DB_PASSWORD:admin}
+
+server:
+  port: 8080
+  trusted-urls: "http://localhost:4200, http://localhost:8080"
+  apache-kafka:
+    enable: ${ENABLE_APACHE_KAFKA:true}
+    host: ${APACHE_KAFKA_HOST:localhost}
+    port: ${APACHE_KAFKA_PORT:9092}
+    generic-topic:
+      retention-ms: 1000
+      partitions: 1
+      replicas: 1

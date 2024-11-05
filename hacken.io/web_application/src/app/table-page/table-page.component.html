@@ -1,0 +1,118 @@
+<div id="table-page-component">
+    @if (transactionsData.length > 0) {
+        <div id="search-panel">
+            <button (click)="changeSearchType(SEARCH_STATE.SIMPLE_SEARCH)">
+                Simple search
+            </button>
+            <button (click)="changeSearchType(SEARCH_STATE.COMPLEX_SEARCH)">
+                Complex search
+            </button>
+            <button (click)="updateTable()">Updatev table</button>
+
+            @if (searchState === SEARCH_STATE.COMPLEX_SEARCH) {
+                <div>
+                    <input
+                        placeholder="To"
+                        type="text"
+                        [(ngModel)]="complexSearchContext.toValue"
+                    />
+                    <input
+                        placeholder="From"
+                        type="text"
+                        [(ngModel)]="complexSearchContext.fromValue"
+                    />
+                    <input
+                        placeholder="Gas"
+                        type="text"
+                        [(ngModel)]="complexSearchContext.gas"
+                    />
+                    <input
+                        placeholder="Gas Price"
+                        type="text"
+                        [(ngModel)]="complexSearchContext.gasPrice"
+                    />
+                    <input
+                        placeholder="Transaction Hash"
+                        type="text"
+                        [(ngModel)]="complexSearchContext.transactionHash"
+                    />
+                    <input
+                        placeholder="Date"
+                        type="datetime-local"
+                        [(ngModel)]="complexSearchContext.date"
+                    />
+                    <button (click)="clickOnComplexSearch()">Search</button>
+                </div>
+            } @else if (searchState === SEARCH_STATE.SIMPLE_SEARCH) {
+                <div>
+                    <select [(ngModel)]="simpleSearchContext.searchBy">
+                        @for (
+                            optionItem of availableOptions;
+                            track optionItem
+                        ) {
+                            <option value="{{ optionItem.key }}">
+                                {{ optionItem.value }}
+                            </option>
+                        }
+                    </select>
+
+                    @if (simpleSearchContext.searchBy === "date") {
+                        <input
+                            placeholder="Date"
+                            type="datetime-local"
+                            value="{{ simpleSearchContext.dateValue }}"
+                            [(ngModel)]="simpleSearchContext.dateValue"
+                        />
+                    } @else {
+                        <input
+                            placeholder="Type..."
+                            type="text"
+                            value="{{ simpleSearchContext.value }}"
+                            [(ngModel)]="simpleSearchContext.value"
+                        />
+                    }
+
+                    <button (click)="clickOnSimpleSearch()">Search</button>
+                </div>
+            }
+        </div>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Transaction Hash</th>
+                    <th>Date</th>
+                    <th>Block Number</th>
+                    <th>Gas</th>
+                    <th>Gas Price</th>
+                    <th>From</th>
+                    <th>To</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (entity of transactionsData; track entity) {
+                    <tr>
+                        <td>{{ entity.transactionHash }}</td>
+                        <td>{{ entity.date }}</td>
+                        <td>{{ entity.blockNumber }}</td>
+                        <td>{{ entity.gas }}</td>
+                        <td>{{ entity.gasPrice }}</td>
+                        <td>{{ entity.from }}</td>
+                        <td>{{ entity.to }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div id="pagination-section">
+            @if (showPreviousPageButton) {
+                <button (click)="clickOnPreviousPage()">Previous page</button>
+            }
+            @if (showNextPageButton) {
+                <button (click)="clickOnNextPage()">Next page</button>
+            }
+        </div>
+    } @else {
+        <div class="empty-table">
+            <h1>The table is empty</h1>
+        </div>
+    }
+</div>
