@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="385.013" Width="647.956">
+    <Grid Background="#FF2D2D30">
+        <TextBox Name="Tb1" Text="" Margin="10,10,509,303" Foreground="White" Background="#FF1D1D1F" FontFamily="Microsoft JhengHei Light" FontWeight="Bold" FontSize="22"/>
+        <Label Content="X" Margin="131,11,462,298" FontSize="22" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <Label Content="2" Margin="147,5,436,304" FontSize="11" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <TextBox Name="Tb2" Text="" Margin="178,10,341,303" Foreground="White" Background="#FF1D1D1F" FontFamily="Microsoft JhengHei Light" FontWeight="Bold" FontSize="22"/>
+        <TextBox Name="Tb3" Text="" Margin="350,10,169,303" Foreground="White" Background="#FF1D1D1F" FontFamily="Microsoft JhengHei Light" FontWeight="Bold" FontSize="22"/>
+        <Label Content="X" Margin="299,10,295,298" FontSize="22" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <Label Content="ax" Margin="13,83,584,212" FontSize="22" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <Label Content="2" Margin="40,81,569,216" FontSize="11" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <Label Content="+bx+c=0" Margin="40,83,481,212" FontSize="22" FontWeight="Bold" FontFamily="Microsoft JhengHei" Foreground="White"/>
+        <Button Name="B1" Content="Посчитать" Margin="502,10,10,303" Foreground="White" Background="#FF434349" FontFamily="Arial" FontSize="18" FontWeight="Bold" Click="B1_Click"/>
+
+        <ComboBox Name="CB" Margin="0,266,481,49" FontFamily="Arial" FontSize="16"/>
+
+        <!--lllabl-->
+        <Label Name="L1" Content="" Margin="13,124,264,103" Foreground="White" FontFamily="Arial" FontWeight="Bold" FontSize="24"/>
+        <Button Name="CleaR" Content="Очистить" Margin="502,111,10,202" Foreground="White" Background="#FF434349" FontFamily="Arial" FontSize="18" FontWeight="Bold" Click="CleaR_Click"/>
+        <Button Name="Close" Content="Закрыть" Margin="514,273,21,49" Foreground="White" Background="#FF434349" FontFamily="Arial" FontSize="18" FontWeight="Bold" Click="Close_Click"/>
+
+    </Grid>
+</Window>

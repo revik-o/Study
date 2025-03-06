@@ -1,0 +1,17 @@
+<div *ngIf="mainPageContext.mainComponentContext.pageName === ''">
+    <div *ngFor="let languageName of languageNames" style="margin: 0px auto; max-width: 10%;">
+        <div class="lang-pack-line" (click)="openEditor(languageName)">
+            <span>{{ languageName }}</span>
+            <button class="remove-lang-pack" (click)="remove(languageName)">X</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="mainPageContext.mainComponentContext.pageName !== ''">
+    <div class="close-page-button">
+        <button (click)="mainPageContext.mainComponentContext.pageName = ''">X</button>
+    </div>
+    <app-language-editor-create-new *ngIf="mainPageContext.mainComponentContext.pageName === 'new language pack'">
+    </app-language-editor-create-new>
+    <app-language-editor-update *ngIf="mainPageContext.mainComponentContext.pageName === 'update language pack'">
+    </app-language-editor-update>
+</div>
