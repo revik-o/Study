@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.data.ox.core'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testRuntimeOnly libs.junit
+}
+
+test {
+    useJUnitPlatform()
+}

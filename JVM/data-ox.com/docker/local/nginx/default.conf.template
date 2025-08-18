@@ -1,0 +1,50 @@
+server {
+    listen ${NGINX_PORT};
+
+    server_name localhost;
+
+    set $CSP_SCRIPT_SRC "'self' https://connect-cdn.atl-paas.net https://ajax.googleapis.com https://fonts.googleapis.com https://cdn.jsdelivr.net *.ngrok-free.app *.ngrok.dev *.ngrok.app";
+    set $CSP_STYLE_SRC "'self' 'unsafe-inline' https://connect-cdn.atl-paas.net https://ajax.googleapis.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://*.atlassian.net https://*.jira.com";
+    set $CSP_CONNECT_SRC "'self' https://*";
+    set $CSP_IMG_SRC "'self' data: http://*";
+    set $CSP_OBJECT_SRC "'none'";
+
+    location / {
+        proxy_pass http://${NGINX_HOST}:4200;
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;";
+        add_header Content-Security-Policy "default-src 'self' http://*; script-src $CSP_SCRIPT_SRC; style-src $CSP_STYLE_SRC; connect-src $CSP_CONNECT_SRC; img-src $CSP_IMG_SRC; object-src $CSP_OBJECT_SRC";
+        add_header 'Referrer-Policy' 'no-referrer';
+        proxy_redirect     off;
+        proxy_set_header   Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Request-Id $request_id;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        client_max_body_size 0;
+        proxy_read_timeout 300s;
+    }
+
+    location /api/health {
+        proxy_pass http://${NGINX_HOST}:5258/api/health;
+        proxy_read_timeout 3s;
+    }
+
+    location ~ ^/api {
+        proxy_pass http://${NGINX_HOST}:5258;
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;";
+        add_header Content-Security-Policy "default-src 'self' http://*; script-src $CSP_SCRIPT_SRC; style-src $CSP_STYLE_SRC; connect-src $CSP_CONNECT_SRC; img-src $CSP_IMG_SRC; object-src $CSP_OBJECT_SRC";
+        add_header 'Referrer-Policy' 'no-referrer';
+        proxy_redirect     off;
+        proxy_set_header   Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Request-Id $request_id;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        client_max_body_size 0;
+        proxy_read_timeout 300s;
+    }
+}

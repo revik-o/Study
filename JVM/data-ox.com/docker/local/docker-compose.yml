@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: dataox-nginx
+    image: nginx:latest
+    environment:
+      - NGINX_HOST=$NGINX_HOST
+      - NGINX_PORT=$NGINX_PORT
+    volumes:
+      - ./nginx:/etc/nginx/templates
+    network_mode: "host"

@@ -1,0 +1,11 @@
+[versions]
+junit = "5.13.4"
+lombok = "1.18.38"
+spring-framework-boot = "3.5.4"
+spring-dependency-management = "1.1.7"
+
+[libraries]
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+junit = { group = "org.junit.vintage", name = "junit-vintage-engine", version.ref = "junit" }
+
+[plugins]

@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.data.ox.domain.logic'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":core")
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testRuntimeOnly libs.junit
+}
+
+test {
+    useJUnitPlatform()
+}

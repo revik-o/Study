@@ -1,0 +1,5 @@
+rootProject.name = 'DataOx task'
+include 'core'
+include 'application'
+include 'infrastructure'
+include 'api'

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: "DataOx task"
+  server:
+    port: 8080
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+#    datasource:
