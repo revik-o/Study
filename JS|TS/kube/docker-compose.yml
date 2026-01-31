@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    image: local-registry/test-nestjs-app:v0.0.1
+    pull_policy: never
+    container_name: test-nestjs-app
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - DB_PORT=5432
+      - DB_HOST=test-nestjs-app-db
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_NAME
+    restart: always
+    networks:
+      - test-nestjs-app-network
+  db:
+    # https://hub.docker.com/_/postgres
+    image: postgres:18
+    container_name: test-nestjs-app-db
+    ports:
+      - $DB_PORT:5432
+    restart: unless-stopped
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - ./docker/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - test-nestjs-app-network
+
+networks:
+  test-nestjs-app-network:
+    driver: bridge

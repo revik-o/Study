@@ -1,0 +1,6 @@
+PORT=8080
+DB_PORT=5432
+DB_HOST=localhost
+DB_USER=nestjs
+DB_PASSWORD=12345678
+DB_NAME=nestjs_app
