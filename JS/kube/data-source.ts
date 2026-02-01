@@ -18,6 +18,6 @@ export default new DataSource({
     username: getOrThrow('DB_USER'),
     password: getOrThrow('DB_PASSWORD'),
     database: getOrThrow('DB_NAME'),
-    entities: ['dist/**/*.entity.js'],
+    entities: ['dist/src/database/**/*.entity.js'],
     migrations: ['dist/migrations/*.js'],
 });

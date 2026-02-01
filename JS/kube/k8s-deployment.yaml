@@ -60,6 +60,8 @@ spec:
           image: local-registry/test-nestjs-app:v0.0.1
           imagePullPolicy: IfNotPresent
           env:
+            - name: NODE_ENV
+              value: "production"
             - name: PORT
               value: "8080"
             - name: DB_HOST
@@ -85,7 +87,7 @@ spec:
             - containerPort: 8080
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             capabilities:
               drop:
                 - ALL

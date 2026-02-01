@@ -4,3 +4,4 @@ DB_HOST=localhost
 DB_USER=nestjs
 DB_PASSWORD=12345678
 DB_NAME=nestjs_app
+NODE_ENV=production

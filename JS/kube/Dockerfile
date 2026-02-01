@@ -17,9 +17,9 @@ RUN npm run build
 FROM node:25-alpine AS runner
 
 WORKDIR /usr/src/app
-COPY --from=builder /usr/src/app/package-lock.json ./
-COPY --from=builder /usr/src/app/package.json ./
+COPY --chown=node:node --from=builder /usr/src/app/package-lock.json ./
+COPY --chown=node:node --from=builder /usr/src/app/package.json ./
 RUN npm --version && npm ci --omit=dev
-COPY --from=builder /usr/src/app/dist ./dist
+COPY --chown=node:node --from=builder /usr/src/app/dist ./dist
 
 CMD ["node", "dist/src/main.js"]
