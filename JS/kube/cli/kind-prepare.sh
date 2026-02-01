@@ -2,7 +2,11 @@
 
 ARGS_STR="$*"
 
-kind create cluster --name test-nestjs-app
+if [ "$(basename "$PWD")" != "cli" ]; then
+    cd cli || exit 1
+fi
+
+kind create cluster --name test-nestjs-app --config kind-config.yaml
 
 clear
 
