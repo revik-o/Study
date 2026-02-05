@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    container_name: test-nuxt-app
+    ports:
+      - $APP_PORT:80
+    environment:
+      - MONGO_PORT=27017
+      - MONGO_HOST=mongo
+      - MONGO_APP_DB_NAME=$MONGO_APP_DB_NAME
+      - MONGO_APP_DB_USER=$MONGO_APP_DB_USER
+      - MONGO_APP_DB_PASS=$MONGO_APP_DB_PASS
+  db:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - $MONGO_PORT:27017
+    environment:
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_ROOT_PASSWORD
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_ROOT_USERNAME
+      - MONGO_INITDB_APP_DB_NAME=$MONGO_APP_DB_NAME
+      - MONGO_INITDB_APP_DB_USER=$MONGO_APP_DB_USER
+      - MONGO_INITDB_APP_DB_PASS=$MONGO_APP_DB_PASS
+    volumes:
+      - ./docker/mongo:/docker-entrypoint-initdb.d:ro
+    
