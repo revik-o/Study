@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nuxt-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nuxt-app
+  template:
+    metadata:
+      labels:
+        app: nuxt-app
+    spec:
+      containers:
+        - name: nuxt
+          image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.app.port }}
+          
+          env:
+            - name: MONGO_HOST
+              value: {{ .Values.mongodb.serviceName | quote }}
+
+            - name: MONGO_PORT
+              value: {{ .Values.mongodb.port | quote }}
+            - name: MONGO_PORT
+              value: {{ .Values.mongodb.port | quote }}
+            - name: MONGO_APP_DB_NAME
+              value: {{ .Values.mongodb.auth.dbName | quote }}
+            - name: MONGO_APP_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: user
+            - name: MONGO_APP_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nuxt-entrypoint
+spec:
+  type: ClusterIP
+  selector:
+    app: nuxt-app
+  ports:
+    - port: 80
+      targetPort: {{ .Values.app.port }}

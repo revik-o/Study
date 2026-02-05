@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-db
+  template:
+    metadata:
+      labels:
+        app: mongo-db
+    spec:
+      containers:
+        - name: mongo
+          image: "{{ .Values.mongodb.image }}:{{ .Values.mongodb.tag }}"
+          ports:
+            - containerPort: {{ .Values.mongodb.port }}
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: {{ .Values.mongodb.auth.rootUser | quote }}
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: {{ .Values.mongodb.auth.rootPassword | quote }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.mongodb.serviceName }} 
+spec:
+  selector:
+    app: mongo-db
+  ports:
+    - port: {{ .Values.mongodb.port }}
+      targetPort: {{ .Values.mongodb.port }}

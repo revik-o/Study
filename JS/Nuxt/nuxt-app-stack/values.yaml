@@ -1,0 +1,14 @@
+app:
+  image: "local-registry/test-nuxt-app"
+  tag: "v0.0.1"
+  port: 80
+
+mongodb:
+  image: "mongo"
+  tag: "latest"
+  serviceName: "mongo-svc"
+  port: 27017
+  auth:
+    rootUser: "admin"
+    rootPassword: "superSecretPassword123"
+    dbName: "my_app_db"
