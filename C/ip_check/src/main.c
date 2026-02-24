@@ -1,9 +1,50 @@
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
+#include <libsoup/soup.h>
+#include <json-glib/json-glib.h>
 
 #define DEFAULT_WINDOW_HEIGHT 640
 #define DEFAULT_WINDOW_WIDTH 480
 #define SPLASH_LOGO_SIZE (DEFAULT_WINDOW_HEIGHT / 5)
+
+static void on_ip_received(GObject *source, GAsyncResult *res, gpointer user_data) {
+    WebKitWebView *webview = WEBKIT_WEB_VIEW(user_data);
+    SoupSession *session = SOUP_SESSION(source);
+    GError *error = NULL;
+    
+    GBytes *body = soup_session_send_and_read_finish(session, res, &error);
+    
+    if (error) {
+        g_warning("ПИЗДЕЦ С СЕТЬЮ: %s", error->message);
+        g_error_free(error);
+        return;
+    }
+    
+    JsonParser *parser = json_parser_new();
+    if (json_parser_load_from_data(parser, g_bytes_get_data(body, NULL), g_bytes_get_size(body), &error)) {
+        JsonNode *root = json_parser_get_root(parser);
+        JsonObject *obj = json_node_get_object(root);
+        const char *ip = json_object_get_string_member(obj, "ip");
+        
+        g_print("IP ПОЛУЧЕН: %s\n", ip);
+
+        char *js_command = g_strdup_printf("document.body.innerHTML += '<h1>ТВОЙ IP: %s</h1>';", ip);
+        webkit_web_view_evaluate_javascript(webview, js_command, -1, NULL, NULL, NULL, NULL, NULL);
+        g_free(js_command);
+    }
+    
+    g_object_unref(parser);
+    g_bytes_unref(body);
+}
+
+static void fetch_ip(WebKitWebView *webview) {
+    SoupSession *session = soup_session_new();
+    SoupMessage *msg = soup_message_new("GET", "https://api.ipify.org?format=json");
+    
+    soup_session_send_and_read_async(session, msg, G_PRIORITY_DEFAULT, NULL, on_ip_received, webview);
+    
+    g_object_unref(msg);
+}
 
 static void on_script_message_received(WebKitUserContentManager *manager, JSCValue *js_value, gpointer user_data) {
     (void)manager;
@@ -24,6 +65,8 @@ static void on_load_changed(WebKitWebView *webview, WebKitLoadEvent load_event, 
     {
         gtk_stack_set_visible_child_name(stack, "browser");
         g_print("Load status: done\n");
+
+        fetch_ip(webview);
     }
 
     (void)webview;
