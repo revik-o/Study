@@ -1,0 +1,48 @@
+<div class="page-container">
+  <mat-toolbar color="primary" class="page-header mat-elevation-z2">
+    
+    <!-- Issue Path Breadcrumbs -->
+    <div class="issue-path">
+      <span class="path-item" (click)="navigateToProjects()">Projects</span>
+      
+      <ng-container *ngIf="state.projectKey">
+        <span class="separator">/</span>
+        <span class="path-item" (click)="navigateToProject(state.projectKey)">{{state.projectKey}}</span>
+      </ng-container>
+
+      <ng-container *ngIf="state.issueKey">
+        <span class="separator">/</span>
+        <span class="path-item" (click)="navigateToIssue(state.issueKey)">{{state.issueKey}}</span>
+      </ng-container>
+    </div>
+
+    <span class="spacer"></span>
+
+    <!-- Action Buttons based on path -->
+    <button mat-raised-button color="accent" *ngIf="isPathEmpty" (click)="openCreateProjectModal()">
+      <mat-icon>add_box</mat-icon> Create Project
+    </button>
+    <button mat-raised-button color="accent" *ngIf="isProjectSelected" (click)="openCreateIssueModal()">
+      <mat-icon>add_task</mat-icon> Create Issue
+    </button>
+  </mat-toolbar>
+
+  <!-- Dashboard Body dynamically loads components based on state -->
+  <div class="dashboard-body">
+    <app-project-list 
+      *ngIf="isPathEmpty"
+      (projectSelected)="navigateToProject($event)">
+    </app-project-list>
+
+    <app-issue-dashboard 
+      *ngIf="isProjectSelected"
+      [projectKey]="state.projectKey!"
+      (issueSelected)="navigateToIssue($event)">
+    </app-issue-dashboard>
+
+    <app-issue-page 
+      *ngIf="isIssueSelected"
+      [issueKey]="state.issueKey!">
+    </app-issue-page>
+  </div>
+</div>

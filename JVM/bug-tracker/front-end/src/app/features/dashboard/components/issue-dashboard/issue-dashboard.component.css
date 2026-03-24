@@ -1,0 +1,105 @@
+.board-container {
+  display: flex;
+  height: calc(100vh - 120px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 16px;
+}
+
+.board-columns {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+}
+
+.board-column {
+  width: 320px;
+  background-color: #f4f5f7;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.column-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: #42526e;
+}
+
+.issue-count {
+  background: #dfe1e6;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.column-content {
+  flex: 1;
+  padding: 8px 12px;
+  overflow-y: auto;
+  min-height: 100px; /* target area when empty */
+}
+
+.issue-card {
+  cursor: pointer;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.issue-card:hover {
+  background-color: #fafbfc;
+}
+
+.issue-title {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+}
+
+.issue-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.issue-key {
+  font-size: 0.85rem;
+  color: #5e6c84;
+}
+
+.assignee-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* CDK Drag & Drop styles */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.column-content.cdk-drop-list-dragging .issue-card:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

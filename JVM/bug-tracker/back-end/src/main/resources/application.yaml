@@ -1,0 +1,18 @@
+ktor:
+    application:
+        modules:
+            - com.sql.ApplicationKt.module
+    deployment:
+        port: ${SERVER_PORT:8080}
+        base-url: ${SERVER_BASE_URL:localhost:8080}
+
+postgres:
+  url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/bugtracker}
+  user: ${DATABASE_USER:bugtracker}
+  password: ${DATABASE_PASSWORD:bugtracker}
+
+jwt:
+  secret: ${JWT_SECRET:supersecretkey}
+  issuer: ${JWT_ISSUER:http://localhost:8080/}
+  audience: ${JWT_AUDIENCE:jwt-audience}
+  realm: ${JWT_REALM:bug-tracker}

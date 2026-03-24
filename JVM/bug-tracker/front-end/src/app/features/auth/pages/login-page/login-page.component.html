@@ -1,0 +1,48 @@
+<div class="auth-container mat-app-background">
+  <mat-card class="auth-card elevation-z8">
+    <mat-card-header>
+      <mat-card-title>Bug Tracker Login</mat-card-title>
+      <mat-card-subtitle>Sign in to your account</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Enter your email" required />
+          <mat-icon matPrefix>email</mat-icon>
+          @if (loginForm.get('email')?.hasError('required')) {
+          <mat-error>Email is required</mat-error>
+          }
+          @if (loginForm.get('email')?.hasError('email')) {
+          <mat-error>Please enter a valid email address</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Enter your password" required />
+          <mat-icon matPrefix>lock</mat-icon>
+          @if (loginForm.get('password')?.hasError('required')) {
+          <mat-error>Password is required</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="isLoading" class="full-width login-btn"
+            (click)="onLogin()">
+            @if (!isLoading) {
+            <span>Login</span>
+            } @else {
+            <span>Logging in...</span>
+            }
+          </button>
+        </div>
+
+        <div class="link-container">
+          <a mat-button color="accent" routerLink="/register">New user? Create an account</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,32 @@
+.page-header {
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.table-container {
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+th.mat-header-cell {
+  background-color: #fafafa;
+  font-weight: 600;
+  color: #333;
+}

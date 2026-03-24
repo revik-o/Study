@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Create Issue</h2>
+<mat-dialog-content>
+  <form [formGroup]="issueForm" class="modal-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Issue Title</mat-label>
+      <input matInput formControlName="title" placeholder="Summary of the issue" required>
+      <mat-error *ngIf="issueForm.get('title')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="4" placeholder="Detailed description..."></textarea>
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let s of statuses" [value]="s">{{s}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.get('status')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Assignee</mat-label>
+        <mat-select formControlName="assigneeId">
+          <mat-option [value]="null">Unassigned</mat-option>
+          <mat-option *ngFor="let u of users" [value]="u.id">{{u.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Create</button>
+</mat-dialog-actions>

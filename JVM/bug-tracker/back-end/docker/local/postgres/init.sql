@@ -1,0 +1,11 @@
+CREATE DATABASE bugtracker;
+CREATE ROLE bugtracker WITH LOGIN PASSWORD 'bugtracker';
+
+GRANT ALL PRIVILEGES ON DATABASE bugtracker TO bugtracker;
+
+\c bugtracker
+
+GRANT ALL ON SCHEMA public TO bugtracker;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO bugtracker;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO bugtracker;

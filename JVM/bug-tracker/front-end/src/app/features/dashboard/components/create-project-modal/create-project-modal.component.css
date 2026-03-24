@@ -1,0 +1,10 @@
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  min-width: 300px;
+}
+
+.full-width {
+  width: 100%;
+}

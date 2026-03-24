@@ -1,0 +1,26 @@
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  min-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

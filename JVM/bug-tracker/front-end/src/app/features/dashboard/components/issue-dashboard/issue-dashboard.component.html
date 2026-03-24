@@ -1,0 +1,30 @@
+<div class="board-container">
+  <div class="board-columns" cdkDropListGroup>
+
+    <div class="board-column" *ngFor="let col of columns">
+      <div class="column-header">
+        <span class="column-title">{{col.title}}</span>
+        <span class="issue-count">{{col.issues.length}}</span>
+      </div>
+
+      <div class="column-content"
+           cdkDropList
+           [id]="col.id"
+           [cdkDropListData]="col.issues"
+           (cdkDropListDropped)="drop($event)">
+           
+        <mat-card class="issue-card" *ngFor="let issue of col.issues" cdkDrag (click)="onIssueClick(issue)">
+          <mat-card-content>
+            <div class="issue-title">{{issue.title}}</div>
+            <div class="issue-footer">
+              <span class="issue-key">{{issue.key}}</span>
+              <img [src]="issue.assigneeAvatar" alt="Assignee" class="assignee-avatar" *ngIf="issue.assigneeAvatar">
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+
+  </div>
+</div>

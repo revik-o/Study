@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'tailwindcss';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Beautiful gradient background for auth pages */
+.auth-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Refined cards */
+.auth-card {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  border-top: 4px solid #3f51b5; /* primary theme color */
+}
+
+/* Accent for buttons */
+.register-btn, .login-btn {
+  background-color: #3f51b5 !important;
+  color: white !important;
+}
+
+.page-header {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}

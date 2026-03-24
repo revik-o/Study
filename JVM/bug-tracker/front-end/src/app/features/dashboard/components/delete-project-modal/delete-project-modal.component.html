@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Delete Project</h2>
+<mat-dialog-content>
+  <p>Are you sure you want to delete project <strong>{{data.key}}</strong>?</p>
+  <p class="warning-text">This will remove all issues associated with it and cannot be undone.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="onDelete()">Delete Project</button>
+</mat-dialog-actions>

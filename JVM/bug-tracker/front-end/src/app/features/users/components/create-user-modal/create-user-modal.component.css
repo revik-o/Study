@@ -1,0 +1,19 @@
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  min-width: 300px;
+}
+
+.name-row {
+  display: flex;
+  gap: 16px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
